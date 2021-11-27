@@ -1,0 +1,174 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cryptpad
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptpad
+  namespace: cryptpad
+spec:
+  selector:
+    matchLabels:
+      app: cryptpad
+  template:
+    metadata:
+      labels:
+        app: cryptpad
+    spec:
+      volumes:
+        - name: config
+          configMap:
+            name: config
+        - name: cryptpad
+          persistentVolumeClaim:
+            claimName: cryptpad
+      containers:
+        - name: cryptpad
+          image: quay.io/ffddorf/cryptpad:4.12.0
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: config
+              mountPath: /cryptpad/config
+            - name: cryptpad
+              mountPath: /cryptpad/data
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: cryptpad
+data:
+  config.js: |
+    module.exports = {
+      adminKeys: [
+        "[nomaster@pad.freifunk-duesseldorf.de/WUdnwywXbKnT6QsT6OuZXQqJOQCZwiZDz2y3492oGpw=]",
+      ],
+      adminEmail: 'kontakt@freifunk-duesseldorf.de',
+      allowSubscriptions: false,
+      archivePath: './data/archive',
+      blobPath: './data/blob',
+      blobStagingPath: './data/blobstage',
+      blockPath: './data/block',
+      filePath: './data/store',
+      httpAddress: '::',
+      httpPort: 3000,
+      httpSafeOrigin: 'https://cryptpad.freifunk-duesseldorf.de/',
+      httpUnsafeOrigin: 'https://pad.freifunk-duesseldorf.de/',
+      logFeedback: false,
+      logLevel: 'info',
+      logToStdout: true,
+      noSubscriptionButton: true,
+      pinPath: './data/pins',
+      removeDonateButton: true,
+      supportMailboxPublicKey: 'bLZQjf8j/kQnV3LLT64ROORvJjzJzz7FQRLWh1DV6B4=',
+      taskPath: './data/tasks',
+      verbose: false,
+    };
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cryptpad
+  namespace: cryptpad
+spec:
+  selector:
+    app: cryptpad
+  ports:
+    - port: 3000
+      targetPort: 3000
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: security
+  namespace: cryptpad
+spec:
+  headers:
+    stsSeconds: 63072000
+    customResponseHeaders:
+      cross-origin-resource-policy: cross-origin
+      cross-origin-embedder-policy: require-corp
+---
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: cryptpad
+  namespace: cryptpad
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: traefik
+    kubernetes.io/tls-acme: "true"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.middlewares: cryptpad-security@kubernetescrd
+spec:
+  tls:
+    - hosts:
+        - cryptpad.freifunk-duesseldorf.de
+        - pad.freifunk-duesseldorf.de
+      secretName: cryptpad-tls-prod
+  rules:
+    - host: cryptpad.freifunk-duesseldorf.de
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: cryptpad
+                port:
+                  number: 3000
+    - host: pad.freifunk-duesseldorf.de
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: cryptpad
+                port: 
+                  number: 3000
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: cryptpad
+  namespace: cryptpad
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+  volumeName: cryptpad
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: cryptpad
+spec:
+  capacity:
+    storage: 4Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: local-path
+  local:
+    path: /data/cryptpad/cryptpad
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - k3s1
