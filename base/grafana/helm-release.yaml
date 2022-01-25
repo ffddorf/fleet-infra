@@ -19,7 +19,9 @@ spec:
       enabled: true
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
-        kubernetes.io/tls-acme: "true"
+        traefik.ingress.kubernetes.io/router.entrypoints: websecure,web
+        traefik.ingress.kubernetes.io/router.middlewares: jitsi-secured@kubernetescrd
+        traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
       - grafana2.jitsi.freifunk-duesseldorf.de
       tls:
