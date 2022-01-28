@@ -4,5 +4,4 @@ resources:
 - ../../base/cert-manager
 - ../../base/pad
 - ../../base/prometheus
-- ../../base/traefik
 - ../../base/vault
