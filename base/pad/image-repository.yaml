@@ -1,0 +1,8 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: cryptpad
+spec:
+  interval: 10m
+  image: quay.io/ffddorf/cryptpad

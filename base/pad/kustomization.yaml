@@ -5,3 +5,4 @@ resources:
 - cert.yaml
 - cryptpad.yml
 - image-policy.yaml
+- image-repository.yaml
