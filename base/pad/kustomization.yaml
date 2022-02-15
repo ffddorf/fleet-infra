@@ -4,5 +4,6 @@ namespace: cryptpad
 resources:
 - cert.yaml
 - cryptpad.yml
+- image-automation.yaml
 - image-policy.yaml
 - image-repository.yaml
