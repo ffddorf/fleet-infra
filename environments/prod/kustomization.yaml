@@ -5,3 +5,10 @@ resources:
 - ../../base/pad
 - ../../base/prometheus
 - ../../base/vault
+patchesJson6902:
+- target:
+    group: apps
+    version: v1
+    kind: Deployment
+    name: cryptpad
+  path: pad.yaml
