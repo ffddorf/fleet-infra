@@ -5,4 +5,4 @@ resources:
 images:
 - name: quay.io/ffddorf/cryptpad
   newName: quay.io/ffddorf/cryptpad # {"$imagepolicy": "cryptpad:cryptpad:name"}
-  newTag: 4.12.0 # {"$imagepolicy": "cryptpad:cryptpad:tag"}
+  newTag: 4.12.1 # {"$imagepolicy": "cryptpad:cryptpad:tag"}
