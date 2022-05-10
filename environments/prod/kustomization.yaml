@@ -5,6 +5,5 @@ resources:
 - ../../base/grafana
 - ../../base/pad
 - ../../base/prometheus
-- ../../base/vault
 patchesStrategicMerge:
 - pad-patch.yaml
