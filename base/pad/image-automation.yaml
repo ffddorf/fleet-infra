@@ -18,7 +18,8 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: fleet-infra
+    name: flux-system
+    namespace: flux-system
   update:
     path: ./clusters/my-k3s1
     strategy: Setters
