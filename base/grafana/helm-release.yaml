@@ -42,3 +42,4 @@ spec:
           disableDelete: true
       datasources:
         enabled: true
+        searchNamespace: ALL
