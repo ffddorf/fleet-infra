@@ -28,3 +28,17 @@ spec:
       - secretName: grafana-tls
         hosts:
         - grafana2.jitsi.freifunk-duesseldorf.de
+    grafana.ini:
+      auth.anonymous:
+        enabled: true
+        org_name: Main Org.
+        org_role: Viewer
+      auth:
+        disable_login_form: true
+    sidecar:
+      dashboards:
+        enabled: true
+        provider:
+          disableDelete: true
+      datasources:
+        enabled: true
