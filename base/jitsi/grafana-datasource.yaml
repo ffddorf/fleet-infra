@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasource
+  labels:
+    grafana_datasource: "true"
+data:
+  influxdb-datasource.yaml: |
+    apiVersion: 1
+    datasources:
+    - name: Jitsi InfluxDB
+      type: influxdb
+      database: jitsi
+      url: http://influxdb.jitsi.svc.cluster.local:8086
+      access: proxy
