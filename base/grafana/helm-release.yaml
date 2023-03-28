@@ -23,11 +23,11 @@ spec:
         traefik.ingress.kubernetes.io/router.middlewares: jitsi-secured@kubernetescrd
         traefik.ingress.kubernetes.io/router.tls: "true"
       hosts:
-      - grafana2.jitsi.freifunk-duesseldorf.de
+      - grafana.jitsi.freifunk-duesseldorf.de
       tls:
       - secretName: grafana-tls
         hosts:
-        - grafana2.jitsi.freifunk-duesseldorf.de
+        - grafana.jitsi.freifunk-duesseldorf.de
     grafana.ini:
       auth.anonymous:
         enabled: true
