@@ -6,3 +6,4 @@ resources:
 - cryptpad.yml
 - image-policy.yaml
 - image-repository.yaml
+- image-update-automation.yaml
