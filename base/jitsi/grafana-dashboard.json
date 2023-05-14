@@ -4,7 +4,10 @@
       {
         "9767hashKey": "object:152",
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -22,10 +25,7 @@
   "description": "Statistics of our Jitsi Meet video conference servers",
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "gnetId": null,
   "graphTooltip": 1,
-  "id": 2,
-  "iteration": 1679994894255,
   "links": [
     {
       "9767hashKey": "object:398",
@@ -41,7 +41,10 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -79,7 +82,6 @@
       },
       "hideTimeOverride": true,
       "id": 6,
-      "interval": null,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -95,12 +97,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [],
           "limit": "1",
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT last(\"conferences\") FROM /^$/ WHERE  GROUP BY time(10s) fill(previous)",
@@ -124,14 +130,15 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "number of current conferences",
       "transformations": [],
       "type": "stat"
     },
     {
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -169,7 +176,6 @@
       },
       "hideTimeOverride": true,
       "id": 8,
-      "interval": null,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -185,12 +191,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [],
           "limit": "1",
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT sum(\"participants\") FROM \"exec_meet\" WHERE (\"host\" =~ /^$/) AND  GROUP BY time() fill(previous)",
@@ -214,13 +224,14 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "total of current participants",
       "type": "stat"
     },
     {
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 0,
@@ -258,7 +269,6 @@
       },
       "hideTimeOverride": true,
       "id": 30,
-      "interval": null,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -274,12 +284,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [],
           "limit": "1",
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT sum(\"participants\") FROM \"exec_meet\" WHERE (\"host\" =~ /^$/) AND  GROUP BY time() fill(previous)",
@@ -303,13 +317,14 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "largest conference participants",
       "type": "stat"
     },
     {
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "decimals": 2,
@@ -351,25 +366,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
           "alias": "",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "/^$/",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"bytes_sent\") FROM \"net\" WHERE (\"host\" = 'select tag value') AND  GROUP BY time() fill(null)",
@@ -385,10 +391,6 @@
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "mean"
-              },
-              {
                 "params": [
                   "1h"
                 ],
@@ -400,12 +402,14 @@
         }
       ],
       "timeFrom": "24h",
-      "timeShift": null,
       "title": "traffic volume per hour",
       "type": "stat"
     },
     {
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -440,7 +444,6 @@
       },
       "hideTimeOverride": true,
       "id": 14,
-      "interval": null,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -456,12 +459,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [],
           "limit": "",
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(sum(\"bytes_recv\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" = 'eth0' OR \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" =~ /ens/) AND  GROUP BY time() fill(linear)",
@@ -493,13 +500,14 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "current data rate incoming",
       "type": "stat"
     },
     {
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -534,7 +542,6 @@
       },
       "hideTimeOverride": true,
       "id": 15,
-      "interval": null,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -550,12 +557,16 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [],
           "limit": "",
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(sum(\"bytes_sent\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" = 'eth0' OR \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" =~ /ens/) AND  GROUP BY time() fill(linear)",
@@ -587,8 +598,6 @@
           "tags": []
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "current data rate outgoing",
       "type": "stat"
     },
@@ -597,7 +606,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -636,7 +648,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -647,15 +659,12 @@
       "targets": [
         {
           "alias": "",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "/^$/",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"conferences\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
@@ -669,10 +678,6 @@
                   "conferences"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
               }
             ]
           ],
@@ -680,9 +685,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "number of conferences",
       "tooltip": {
         "shared": true,
@@ -691,9 +694,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -702,9 +703,7 @@
           "9767hashKey": "object:117",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
@@ -712,16 +711,12 @@
           "9767hashKey": "object:118",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -729,7 +724,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -768,7 +766,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -779,15 +777,12 @@
       "targets": [
         {
           "alias": "",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "/^$/",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"participants\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
@@ -801,10 +796,6 @@
                   "participants"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
               }
             ]
           ],
@@ -812,7 +803,6 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
       "timeShift": "10s",
       "title": "number of participants",
@@ -823,9 +813,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -834,9 +822,7 @@
           "9767hashKey": "object:415",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
@@ -844,16 +830,12 @@
           "9767hashKey": "object:416",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -861,7 +843,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -900,7 +885,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -911,15 +896,12 @@
       "targets": [
         {
           "alias": ":  Running",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "/^$/",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -931,10 +913,6 @@
                   "videostreams"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
               }
             ]
           ],
@@ -942,9 +920,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "number of streams",
       "tooltip": {
         "shared": true,
@@ -953,9 +929,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -964,25 +938,19 @@
           "9767hashKey": "object:1245",
           "decimals": 2,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "9767hashKey": "object:1246",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -990,7 +958,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1028,7 +999,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1039,15 +1010,12 @@
       "targets": [
         {
           "alias": "",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "/^$/",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"average_response_ms\") FROM \"ping\" WHERE (\"url\" =~ /jvb/) AND  GROUP BY time(), \"url\" fill(null)",
@@ -1061,10 +1029,6 @@
                   "rtt_aggregate"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
               }
             ]
           ],
@@ -1072,7 +1036,6 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
       "timeShift": "10s",
       "title": "median latency",
@@ -1083,9 +1046,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1094,25 +1055,19 @@
           "9767hashKey": "object:618",
           "decimals": 0,
           "format": "ms",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "9767hashKey": "object:619",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1120,7 +1075,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -1159,7 +1117,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1176,15 +1134,12 @@
       "targets": [
         {
           "alias": " RX",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "/^$/",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(mean(\"bytes_recv\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^$/ AND  \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net$/ ) AND  GROUP BY time(), \"host\" fill(null)",
@@ -1200,12 +1155,8 @@
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "mean"
-              },
-              {
                 "params": [
-                  "1s"
+                  "5m"
                 ],
                 "type": "non_negative_derivative"
               },
@@ -1221,14 +1172,11 @@
         },
         {
           "alias": " TX",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
+          "groupBy": [],
           "measurement": "/^$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1245,12 +1193,8 @@
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "mean"
-              },
-              {
                 "params": [
-                  "1s"
+                  "5m"
                 ],
                 "type": "non_negative_derivative"
               },
@@ -1266,9 +1210,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "data rate",
       "tooltip": {
         "shared": true,
@@ -1277,9 +1219,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1287,25 +1227,18 @@
         {
           "9767hashKey": "object:951",
           "format": "bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "9767hashKey": "object:952",
           "format": "bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1313,7 +1246,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "decimals": 0,
       "description": "",
       "fieldConfig": {
@@ -1353,7 +1289,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1364,6 +1300,10 @@
       "targets": [
         {
           "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [
             {
               "params": [
@@ -1372,7 +1312,7 @@
               "type": "time"
             }
           ],
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"conferences\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
@@ -1399,7 +1339,6 @@
       "thresholds": [],
       "timeFrom": "28d",
       "timeRegions": [],
-      "timeShift": null,
       "title": "daily max. number of conferences",
       "tooltip": {
         "shared": true,
@@ -1408,9 +1347,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1419,9 +1356,7 @@
           "9767hashKey": "object:117",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
@@ -1429,16 +1364,12 @@
           "9767hashKey": "object:118",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -1446,7 +1377,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Jitsi InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "P9CDEA3BDE4D20668"
+      },
       "decimals": 0,
       "description": "",
       "fieldConfig": {
@@ -1486,7 +1420,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.2.3",
+      "pluginVersion": "9.5.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1497,6 +1431,10 @@
       "targets": [
         {
           "alias": "",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
+          },
           "groupBy": [
             {
               "params": [
@@ -1505,7 +1443,7 @@
               "type": "time"
             }
           ],
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT mean(\"conferences\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
@@ -1532,7 +1470,6 @@
       "thresholds": [],
       "timeFrom": "28d",
       "timeRegions": [],
-      "timeShift": null,
       "title": "daily max. number of participants",
       "tooltip": {
         "shared": true,
@@ -1541,9 +1478,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -1552,9 +1487,7 @@
           "9767hashKey": "object:117",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
@@ -1562,558 +1495,32 @@
           "9767hashKey": "object:118",
           "decimals": 0,
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 0,
-        "y": 28
-      },
-      "hiddenSeries": false,
-      "id": 23,
-      "interval": "10s",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": true,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "[[tag_name]]",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"node_systemd_unit_tasks_current\") FROM \"jitsi.freifunk-duesseldorf.de\" WHERE  GROUP BY time(), \"name\"",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "number of tasks",
-      "tooltip": {
-        "shared": true,
-        "sort": 2,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "9767hashKey": "object:270",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "9767hashKey": "object:271",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 28
-      },
-      "hiddenSeries": false,
-      "hideTimeOverride": true,
-      "id": 25,
-      "interval": "5m",
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT non_negative_derivative(mean(\"node_cpu_seconds_total\"), 1s) FROM /^$/ WHERE (\"mode\" != 'idle') AND  GROUP BY \"mode\", time()",
-          "rawQuery": true,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "CPU usage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "9767hashKey": "object:182",
-          "decimals": 0,
-          "format": "percentunit",
-          "label": "",
-          "logBase": 1,
-          "max": "1",
-          "min": null,
-          "show": true
-        },
-        {
-          "9767hashKey": "object:183",
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 34
-      },
-      "hiddenSeries": false,
-      "id": 27,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "mountpoint"
-              ],
-              "type": "tag"
-            }
-          ],
-          "measurement": "/^$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_filesystem_free_bytes"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "filesystem free bytes",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "transformations": [],
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "9767hashKey": "object:536",
-          "decimals": 1,
-          "format": "bytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": "0",
-          "show": true
-        },
-        {
-          "9767hashKey": "object:537",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 34
-      },
-      "hiddenSeries": false,
-      "id": 29,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.2.3",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "alias": "disk",
-          "groupBy": [
-            {
-              "params": [
-                ""
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "/^$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_disk_written_bytes_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "bytes written on disk",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "9767hashKey": "object:701",
-          "decimals": 1,
-          "format": "bytes",
-          "label": null,
-          "logBase": 2,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "9767hashKey": "object:702",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 31,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
-        "allValue": null,
         "current": {
           "selected": false,
           "text": "jitsi.freifunk-duesseldorf.de",
           "value": "jitsi.freifunk-duesseldorf.de"
         },
-        "datasource": "Jitsi InfluxDB",
+        "datasource": {
+          "type": "influxdb",
+          "uid": "P9CDEA3BDE4D20668"
+        },
         "definition": "SHOW MEASUREMENTS",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
         "label": "Videobridge",
@@ -2152,5 +1559,6 @@
   "timezone": "",
   "title": "Jitsi Meet Stats",
   "uid": "U6sKqPuZz",
-  "version": 54
+  "version": 1,
+  "weekStart": ""
 }
