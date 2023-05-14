@@ -15,3 +15,9 @@ spec:
   values:
     grafana:
       enabled: false
+    kubeControllerManager:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeScheduler:
+      enabled: false
