@@ -97,7 +97,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -191,7 +191,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -284,7 +284,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -366,7 +366,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "alias": "",
@@ -459,7 +459,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -557,7 +557,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -648,7 +648,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -663,7 +663,14 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -678,6 +685,10 @@
                   "conferences"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
               }
             ]
           ],
@@ -766,7 +777,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -781,7 +792,14 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -796,6 +814,10 @@
                   "participants"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
               }
             ]
           ],
@@ -885,7 +907,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -900,7 +922,14 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -913,6 +942,10 @@
                   "videostreams"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
               }
             ]
           ],
@@ -999,7 +1032,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1014,7 +1047,14 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1029,6 +1069,10 @@
                   "rtt_aggregate"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [],
+                "type": "median"
               }
             ]
           ],
@@ -1117,7 +1161,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1138,7 +1182,14 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1155,8 +1206,12 @@
                 "type": "field"
               },
               {
+                "params": [],
+                "type": "mean"
+              },
+              {
                 "params": [
-                  "5m"
+                  "1s"
                 ],
                 "type": "non_negative_derivative"
               },
@@ -1177,7 +1232,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "groupBy": [],
-          "measurement": "/^$/",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(mean(\"bytes_sent\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^$/ AND  \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net$/ ) AND  GROUP BY time(), \"host\" fill(null)",
@@ -1194,7 +1249,7 @@
               },
               {
                 "params": [
-                  "5m"
+                  "1s"
                 ],
                 "type": "non_negative_derivative"
               },
@@ -1289,7 +1344,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1420,7 +1475,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.5.1",
+      "pluginVersion": "9.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
