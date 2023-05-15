@@ -930,7 +930,7 @@
               "type": "time"
             }
           ],
-          "measurement": "/^$jvb$/",
+          "measurement": "jitsi.freifunk-duesseldorf.de",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
