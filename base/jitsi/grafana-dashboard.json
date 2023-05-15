@@ -374,7 +374,20 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "1h"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "previous"
+              ],
+              "type": "fill"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -391,10 +404,12 @@
                 "type": "field"
               },
               {
-                "params": [
-                  "1h"
-                ],
-                "type": "non_negative_derivative"
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [],
+                "type": "non_negative_difference"
               }
             ]
           ],
@@ -930,7 +945,7 @@
               "type": "time"
             }
           ],
-          "measurement": "jitsi.freifunk-duesseldorf.de",
+          "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
@@ -1231,7 +1246,14 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "groupBy": [],
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1246,6 +1268,10 @@
                   "node_network_transmit_bytes_total"
                 ],
                 "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
               },
               {
                 "params": [
