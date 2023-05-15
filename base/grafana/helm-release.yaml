@@ -40,6 +40,8 @@ spec:
         enabled: true
         provider:
           disableDelete: true
+        reloadURL: "http://grafana/api/admin/provisioning/dashboards/reload"
       datasources:
         enabled: true
         searchNamespace: ALL
+        reloadURL: "http://grafana/api/admin/provisioning/datasources/reload"
