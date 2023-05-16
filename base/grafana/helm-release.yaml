@@ -41,6 +41,7 @@ spec:
         provider:
           disableDelete: true
         reloadURL: "http://grafana/api/admin/provisioning/dashboards/reload"
+        searchNamespace: ALL
       datasources:
         enabled: true
         searchNamespace: ALL
