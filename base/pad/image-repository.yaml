@@ -5,4 +5,4 @@ metadata:
   name: cryptpad
 spec:
   interval: 10m
-  image: quay.io/ffddorf/cryptpad
+  image: docker.io/cryptpad/cryptpad
