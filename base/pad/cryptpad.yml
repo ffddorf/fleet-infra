@@ -27,7 +27,7 @@ spec:
             claimName: cryptpad
       containers:
         - name: cryptpad
-          image: quay.io/ffddorf/cryptpad:5.0.0 # {"$imagepolicy": "cryptpad:cryptpad"}
+          image: docker.io/cryptpad/cryptpad:version-5.0.0 # {"$imagepolicy": "cryptpad:cryptpad"}
           resources:
             limits:
               memory: "512Mi"
