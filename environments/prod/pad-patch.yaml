@@ -8,4 +8,4 @@ spec:
     spec:
       containers:
       - name: cryptpad
-        image: docker.io/cryptpad/cryptpad:version-5.2.1 # {"$imagepolicy": "cryptpad:cryptpad"}
+        image: docker.io/cryptpad/cryptpad:version-5.5.0 # {"$imagepolicy": "cryptpad:cryptpad"}
