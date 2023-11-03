@@ -10,7 +10,8 @@ metadata:
   name: cryptpad
   namespace: cryptpad
 spec:
-  strategy: Recreate
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: cryptpad
