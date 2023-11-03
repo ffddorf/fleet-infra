@@ -30,10 +30,15 @@ spec:
       containers:
         - name: cryptpad
           image: docker.io/cryptpad/cryptpad:version-5.0.0 # {"$imagepolicy": "cryptpad:cryptpad"}
+          env:
+            - name: CPAD_CONF
+              value: /cryptpad/config/config.js
           resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
             limits:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: 512Mi
           ports:
             - containerPort: 3000
           volumeMounts:
