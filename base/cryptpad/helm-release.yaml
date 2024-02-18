@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cryptpad
+spec:
+  interval: 1h
+  install:
+    createNamespace: false
+  chart:
+    spec:
+      chart: cryptpad
+      sourceRef:
+        kind: HelmRepository
+        name: cryptpad-github
+  values:
+    config:
+      adminKeys: [
+        "[nomaster@pad.freifunk-duesseldorf.de/WUdnwywXbKnT6QsT6OuZXQqJOQCZwiZDz2y3492oGpw=]",
+      ]
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+        - host: cryptpad.freifunk-duesseldorf.de
+        - host: pad.freifunk-duesseldorf.de
+      tls:
+        - hosts:
+            - cryptpad.freifunk-duesseldorf.de
+            - pad.freifunk-duesseldorf.de
+          secretName: cryptpad-tls-prod
