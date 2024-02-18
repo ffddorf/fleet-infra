@@ -1,0 +1,7 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: cryptpad-github
+spec:
+  url: https://cryptpad.github.io/helm
+  interval: 1h
