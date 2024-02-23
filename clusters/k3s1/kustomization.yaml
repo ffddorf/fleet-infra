@@ -5,4 +5,5 @@ resources:
 - ../../environments/prod
 - traefik-config.yaml
 patchesStrategicMerge:
+- dendrite-helm-release.yaml
 - grafana-helm-release.yaml

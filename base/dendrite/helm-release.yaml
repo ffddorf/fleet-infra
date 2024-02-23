@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: dendrite
+spec:
+  chart:
+    spec:
+      chart: dendrite
+      sourceRef:
+        kind: HelmRepository
+        name: dendrite
+  interval: 1h
+  releaseName: dendrite
+  values:
+    dendrite_config:
+      global:
+        trusted_third_party_id_servers: []
+        metrics:
+          enabled: true
+    postgresql:
+      enabled: true
+      persistence:
+        enabled: true
+    prometheus:
+      servicemonitor:
+        enabled: true
+      rules:
+        enabled: true
+    grafana:
+      dashboards:
+        enabled: true
