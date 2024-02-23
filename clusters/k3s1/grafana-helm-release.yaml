@@ -1,0 +1,20 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: grafana
+  namespace: grafana
+spec:
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+      hosts:
+      - grafana.jitsi.freifunk-duesseldorf.de
+      - grafana.ffddorf.net
+      tls:
+      - secretName: grafana-tls
+        hosts:
+        - grafana.jitsi.freifunk-duesseldorf.de
+        - grafana.ffddorf.net
+   

@@ -15,16 +15,6 @@ spec:
   values:
     serviceMonitor:
       enabled: true
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: letsencrypt-prod
-      hosts:
-      - grafana.jitsi.freifunk-duesseldorf.de
-      tls:
-      - secretName: grafana-tls
-        hosts:
-        - grafana.jitsi.freifunk-duesseldorf.de
     grafana.ini:
       auth.anonymous:
         enabled: true

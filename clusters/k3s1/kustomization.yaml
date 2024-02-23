@@ -4,3 +4,5 @@ resources:
 - flux-system
 - ../../environments/prod
 - traefik-config.yaml
+patchesStrategicMerge:
+- grafana-helm-release.yaml
