@@ -22,10 +22,10 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hosts:
-        - host: cryptpad.freifunk-duesseldorf.de
-        - host: pad.freifunk-duesseldorf.de
+      - host: cryptpad.freifunk-duesseldorf.de
+      - host: pad.freifunk-duesseldorf.de
       tls:
-        - hosts:
-            - cryptpad.freifunk-duesseldorf.de
-            - pad.freifunk-duesseldorf.de
-          secretName: cryptpad-tls-prod
+      - hosts:
+        - cryptpad.freifunk-duesseldorf.de
+        - pad.freifunk-duesseldorf.de
+        secretName: cryptpad-tls-prod
