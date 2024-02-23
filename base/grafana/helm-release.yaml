@@ -43,3 +43,6 @@ spec:
         enabled: true
         searchNamespace: ALL
         reloadURL: "http://grafana/api/admin/provisioning/datasources/reload"
+    persistence:
+      inMemory:
+        enabled: true
