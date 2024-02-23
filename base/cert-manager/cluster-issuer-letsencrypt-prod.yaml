@@ -11,3 +11,12 @@ spec:
     solvers:
     - http01:
         ingress: {}
+    - dns01:
+        cloudflare:
+          email: support@freifunk-duesseldorf.de
+          apiTokenSecretRef:
+            name: cloudflare-secret
+            key: token
+      selector:
+        dnsZones:
+        - ffddorf.net
