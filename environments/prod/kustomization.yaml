@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
 - ../../base/cert-manager
 - ../../base/cryptpad
+- ../../base/external-dns
 - ../../base/grafana
 - ../../base/prometheus
