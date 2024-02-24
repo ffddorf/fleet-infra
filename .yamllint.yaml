@@ -1,6 +1,8 @@
+---
 yaml-files:
 - '*.yaml'
 rules:
   indentation:
     spaces: 2
     indent-sequences: false
+  document-start: enable
