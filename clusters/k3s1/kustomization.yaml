@@ -4,6 +4,7 @@ resources:
 - flux-system
 - ../../environments/prod
 - traefik-config.yaml
+- apps.yaml
 patchesStrategicMerge:
 - dendrite-helm-release.yaml
 - grafana-helm-release.yaml
