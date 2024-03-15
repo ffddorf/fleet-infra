@@ -16,7 +16,6 @@ spec:
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-prod
       hostName: dendrite.ffddorf.net
-      tls: 
+      tls:
       - hosts: [ dendrite.ffddorf.net ]
         secretName: dendrite-tls
-
