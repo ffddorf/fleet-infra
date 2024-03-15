@@ -8,3 +8,4 @@ resources:
 - ../../base/external-dns
 - ../../base/grafana
 - ../../base/prometheus
+- ../../base/snowflake

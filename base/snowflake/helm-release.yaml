@@ -1,0 +1,14 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: snowflake
+spec:
+  chart:
+    spec:
+      chart: tor-snowflake-proxy
+      sourceRef:
+        kind: HelmRepository
+        name: snowflake
+  interval: 1h
+  releaseName: snowflake
