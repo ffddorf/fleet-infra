@@ -13,6 +13,7 @@ spec:
     - http01:
         ingress: {}
     - dns01:
+        cnameStrategy: Follow
         cloudflare:
           email: support@freifunk-duesseldorf.de
           apiTokenSecretRef:
@@ -21,3 +22,4 @@ spec:
       selector:
         dnsZones:
         - ffddorf.net
+        - freifunk-duesseldorf.de
