@@ -11,5 +11,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./base/metallb
+  path: ./environments/prod
   prune: false

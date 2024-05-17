@@ -9,3 +9,6 @@ resources:
 - ../../base/grafana
 - ../../base/prometheus
 - ../../base/snowflake
+patches:
+- path: patch-dendrite.yaml
+- path: patch-grafana.yaml
