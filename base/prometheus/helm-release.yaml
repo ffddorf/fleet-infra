@@ -24,3 +24,13 @@ spec:
       enabled: false
     kubeScheduler:
       enabled: false
+    prometheus:
+      prometheusSpec:
+        externalPrefixNilUsesHelmValues: false
+        podMonitorSelectorNilUsesHelmValues: false
+        probeSelectorNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
+        scrapeConfigSelectorNilUsesHelmValues: false
+        serviceMonitorSelectorNilUsesHelmValues: false
+        externalPrefixNilUsesHelmValues: false
+        ruleSelectorNilUsesHelmValues: false
