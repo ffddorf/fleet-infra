@@ -24,12 +24,13 @@ spec:
       auth:
         disable_login_form: true
       users:
+        auto_assign_org_role: Admin
         default_theme: system
       auth.github:
         enabled: true
         auto_login: true
         allowed_organizations: ffddorf
-        role_attribute_path: "'GrafanaAdmin'"
+        skip_org_role_sync: true
         client_id: $__file{/secrets/grafana-secret/client_id}
         client_secret: $__file{/secrets/grafana-secret/client_secret}
     extraSecretMounts:
