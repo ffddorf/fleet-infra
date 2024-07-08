@@ -1,0 +1,15 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: jitsi-service-monitor
+spec:
+  namespaceSelector:
+    matchNames:
+    - jitsi
+  selector:
+    matchLabels:
+      name: jitsi
+  endpoints:
+  - port: metrics
+    interval: 30s

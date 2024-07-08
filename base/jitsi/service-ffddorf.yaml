@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jitsi-service-ffddorf
+  labels:
+    name: jitsi
+spec:
+  type: ExternalName
+  externalName: jitsi.freifunk-duesseldorf.de
+  ports:
+  - name: metrics
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: jitsi-service-ffddorf
+  labels:
+    name: jitsi
+subsets:
+  - addresses:
+    - ip: 10.1.1.42
+    ports:
+      - name: metrics
+        port: 8080
+        protocol: TCP
