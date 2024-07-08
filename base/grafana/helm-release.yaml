@@ -25,6 +25,19 @@ spec:
         disable_login_form: true
       users:
         default_theme: system
+      auth.github:
+        enabled: true
+        auto_login: true
+        allowed_organizations: ffddorf
+        role_attribute_path: "'GrafanaAdmin'"
+        client_id: $__file{/secrets/grafana-secret/client_id}
+        client_secret: $__file{/secrets/grafana-secret/client_secret}
+    extraSecretMounts:
+      - name: grafana-secret
+        secretName: grafana-secret
+        defaultMode: 0440
+        mountPath: /secrets/grafana-secret
+        readOnly: true
     sidecar:
       dashboards:
         enabled: true
