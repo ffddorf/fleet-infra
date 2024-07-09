@@ -107,13 +107,10 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "jitsi_jvb_conferences{service=\"$jvb\"}",
-          "fullMetaSearch": false,
+          "expr": "jitsi_jvb_conferences{service=\"$service\"}",
           "groupBy": [],
-          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
           "limit": "1",
@@ -139,8 +136,7 @@
               }
             ]
           ],
-          "tags": [],
-          "useBackend": false
+          "tags": []
         }
       ],
       "title": "number of current conferences",
@@ -213,13 +209,10 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "jitsi_jvb_current_visitors{service=\"$jvb\"}",
-          "fullMetaSearch": false,
+          "expr": "jitsi_jvb_current_visitors{service=\"$service\"}",
           "groupBy": [],
-          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
           "limit": "1",
@@ -245,8 +238,7 @@
               }
             ]
           ],
-          "tags": [],
-          "useBackend": false
+          "tags": []
         }
       ],
       "title": "total of current participants",
@@ -319,13 +311,10 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "jitsi_jvb_largest_conference{service=\"$jvb\"}",
-          "fullMetaSearch": false,
+          "expr": "jitsi_jvb_largest_conference{service=\"$service\"}",
           "groupBy": [],
-          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
           "limit": "1",
@@ -351,8 +340,7 @@
               }
             ]
           ],
-          "tags": [],
-          "useBackend": false
+          "tags": []
         }
       ],
       "title": "largest conference participants",
@@ -388,7 +376,6 @@
         "y": 0
       },
       "id": 19,
-      "interval": "1h",
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -415,11 +402,9 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "delta(jitsi_jvb_bytes_sent_total{service=\"$jvb\"}[$__range])",
-          "fullMetaSearch": false,
+          "expr": "delta(jitsi_jvb_bytes_sent_total{service=\"$service\"}[24h])",
           "groupBy": [
             {
               "params": [
@@ -434,7 +419,6 @@
               "type": "fill"
             }
           ],
-          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
           "measurement": "/^$jvb$/",
@@ -463,11 +447,9 @@
               }
             ]
           ],
-          "tags": [],
-          "useBackend": false
+          "tags": []
         }
       ],
-      "timeFrom": "24h",
       "title": "traffic volume per hour",
       "type": "stat"
     },
@@ -535,13 +517,10 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$jvb\"}[5m])",
-          "fullMetaSearch": false,
+          "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$service\"}[5m])",
           "groupBy": [],
-          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
           "limit": "",
@@ -575,8 +554,7 @@
               }
             ]
           ],
-          "tags": [],
-          "useBackend": false
+          "tags": []
         }
       ],
       "title": "current data rate incoming",
@@ -646,13 +624,10 @@
             "type": "influxdb",
             "uid": "P9CDEA3BDE4D20668"
           },
-          "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$jvb\"}[5m])",
-          "fullMetaSearch": false,
+          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$service\"}[5m])",
           "groupBy": [],
-          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
           "limit": "",
@@ -686,8 +661,7 @@
               }
             ]
           ],
-          "tags": [],
-          "useBackend": false
+          "tags": []
         }
       ],
       "title": "current data rate outgoing",
@@ -791,7 +765,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_conferences{service=\"$jvb\"}[$__interval])",
+          "expr": "jitsi_jvb_conferences{service=\"$service\"}",
           "groupBy": [
             {
               "params": [
@@ -927,7 +901,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_current_visitors{service=\"$jvb\"}[$__interval])",
+          "expr": "jitsi_jvb_visitors_total{service=\"$service\"}",
           "groupBy": [
             {
               "params": [
@@ -1012,7 +986,6 @@
           "links": [],
           "mappings": [],
           "min": 0,
-          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1042,11 +1015,14 @@
       "options": {
         "legend": {
           "calcs": [
-            "last"
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
           ],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1062,7 +1038,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_endpoints_sending_audio{service=\"$jvb\"}[$__rate_interval])",
+          "expr": "jitsi_jvb_endpoints_sending_video{service=\"$service\"}",
           "groupBy": [
             {
               "params": [
@@ -1071,8 +1047,7 @@
               "type": "time"
             }
           ],
-          "interval": "",
-          "legendFormat": "audio",
+          "legendFormat": "video",
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1096,17 +1071,44 @@
           "tags": []
         },
         {
+          "alias": ":  Running",
           "datasource": {
-            "type": "prometheus",
-            "uid": "ddr67f2vrw6ioe"
+            "type": "influxdb",
+            "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_endpoints_sending_video{service=\"$jvb\"}[$__rate_interval])",
+          "expr": "jitsi_jvb_endpoints_sending_audio{service=\"$service\"}",
+          "groupBy": [
+            {
+              "params": [
+                "$interval"
+              ],
+              "type": "time"
+            }
+          ],
           "hide": false,
-          "instant": false,
-          "legendFormat": "video",
+          "legendFormat": "audio",
+          "measurement": "/^$jvb$/",
+          "orderByTime": "ASC",
+          "policy": "default",
           "range": true,
-          "refId": "B"
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "videostreams"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "max"
+              }
+            ]
+          ],
+          "tags": []
         }
       ],
       "title": "number of streams",
@@ -1194,7 +1196,7 @@
           ],
           "displayMode": "table",
           "placement": "bottom",
-          "showLegend": true
+          "showLegend": false
         },
         "tooltip": {
           "mode": "multi",
@@ -1210,7 +1212,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "avg_over_time(jitsi_jvb_average_rtt{service=\"$jvb\"}[$__interval])",
+          "expr": "jitsi_jvb_average_rtt{service=\"$service\"}",
           "groupBy": [
             {
               "params": [
@@ -1219,7 +1221,7 @@
               "type": "time"
             }
           ],
-          "legendFormat": "latency",
+          "legendFormat": "__auto",
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1246,7 +1248,7 @@
         }
       ],
       "timeShift": "10s",
-      "title": "average latency",
+      "title": "median latency",
       "type": "timeseries"
     },
     {
@@ -1358,7 +1360,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$jvb\"}[$__interval])",
+          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$service\"}[5m])",
           "groupBy": [
             {
               "params": [
@@ -1367,7 +1369,7 @@
               "type": "time"
             }
           ],
-          "legendFormat": "__auto",
+          "legendFormat": "sending",
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1411,7 +1413,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$jvb\"}[$__interval])",
+          "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$service\"}[5m])",
           "groupBy": [
             {
               "params": [
@@ -1420,7 +1422,7 @@
               "type": "time"
             }
           ],
-          "legendFormat": "__auto",
+          "legendFormat": "receiving",
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
           "policy": "default",
@@ -1508,6 +1510,7 @@
           "links": [],
           "mappings": [],
           "min": 0,
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1560,7 +1563,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_conferences{service=\"$jvb\"}[1d])",
+          "expr": "max_over_time(jitsi_jvb_conferences{service=\"$service\"}[1d])",
           "groupBy": [
             {
               "params": [
@@ -1569,6 +1572,7 @@
               "type": "time"
             }
           ],
+          "interval": "1d",
           "legendFormat": "__auto",
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
@@ -1646,6 +1650,7 @@
           "links": [],
           "mappings": [],
           "min": 0,
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1698,7 +1703,7 @@
             "uid": "P9CDEA3BDE4D20668"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_current_visitors{service=\"$jvb\"}[1d])",
+          "expr": "max_over_time(jitsi_jvb_visitors_total{service=\"$service\"}[1d]) ",
           "groupBy": [
             {
               "params": [
@@ -1707,6 +1712,7 @@
               "type": "time"
             }
           ],
+          "interval": "1d",
           "legendFormat": "__auto",
           "measurement": "/^$jvb$/",
           "orderByTime": "ASC",
@@ -1749,16 +1755,16 @@
           "text": "jitsi-service-chaosdorf",
           "value": "jitsi-service-chaosdorf"
         },
-        "definition": "label_values(jitsi_jvb_conferences,service)",
+        "definition": "label_values(jitsi_jvb_healthy,service)",
         "hide": 0,
         "includeAll": false,
-        "label": "Videobridge",
+        "label": "Service",
         "multi": false,
-        "name": "jvb",
+        "name": "service",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(jitsi_jvb_conferences,service)",
+          "query": "label_values(jitsi_jvb_healthy,service)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -1770,7 +1776,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
