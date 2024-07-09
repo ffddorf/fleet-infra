@@ -32,5 +32,3 @@ spec:
         ruleSelectorNilUsesHelmValues: false
         scrapeConfigSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
-        externalPrefixNilUsesHelmValues: false
-        ruleSelectorNilUsesHelmValues: false
