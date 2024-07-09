@@ -26,6 +26,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
+  "id": 11,
   "links": [
     {
       "9767hashKey": "object:398",
@@ -43,7 +44,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -104,39 +105,21 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "code",
+          "disableTextWrap": false,
+          "editorMode": "builder",
           "exemplar": false,
-          "expr": "jitsi_jvb_conferences{service=\"$service\"}",
-          "groupBy": [],
+          "expr": "jitsi_jvb_conferences{service=\"jitsi-service-chaosdorf\"}",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
           "instant": true,
           "legendFormat": "__auto",
-          "limit": "1",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT last(\"conferences\") FROM /^$/ WHERE  GROUP BY time(10s) fill(previous)",
           "range": false,
-          "rawQuery": false,
           "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "conferences"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
+          "useBackend": false
         }
       ],
       "title": "number of current conferences",
@@ -145,7 +128,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -206,39 +189,17 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "jitsi_jvb_current_visitors{service=\"$service\"}",
-          "groupBy": [],
+          "expr": "jitsi_jvb_visitors_total{service=\"$service\"}",
+          "hide": false,
           "instant": true,
           "legendFormat": "__auto",
-          "limit": "1",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"participants\") FROM \"exec_meet\" WHERE (\"host\" =~ /^$/) AND  GROUP BY time() fill(previous)",
           "range": false,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "participants"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "title": "total of current participants",
@@ -247,7 +208,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -308,39 +269,16 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "exemplar": false,
           "expr": "jitsi_jvb_largest_conference{service=\"$service\"}",
-          "groupBy": [],
-          "instant": true,
+          "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
-          "limit": "1",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT sum(\"participants\") FROM \"exec_meet\" WHERE (\"host\" =~ /^$/) AND  GROUP BY time() fill(previous)",
-          "range": false,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "largest_conference"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
+          "range": true,
+          "refId": "A"
         }
       ],
       "title": "largest conference participants",
@@ -349,7 +287,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -397,57 +335,18 @@
       "pluginVersion": "11.1.0",
       "targets": [
         {
-          "alias": "",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "delta(jitsi_jvb_bytes_sent_total{service=\"$service\"}[24h])",
-          "groupBy": [
-            {
-              "params": [
-                "1h"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "previous"
-              ],
-              "type": "fill"
-            }
-          ],
+          "expr": "increase(jitsi_jvb_bytes_sent_total{service=\"$service\"}[1d])",
+          "hide": false,
           "instant": true,
           "legendFormat": "__auto",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"bytes_sent\") FROM \"net\" WHERE (\"host\" = 'select tag value') AND  GROUP BY time() fill(null)",
           "range": false,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_network_transmit_bytes_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "sum"
-              },
-              {
-                "params": [],
-                "type": "non_negative_difference"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "title": "traffic volume per hour",
@@ -456,7 +355,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -514,47 +413,17 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "exemplar": false,
           "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$service\"}[5m])",
-          "groupBy": [],
+          "hide": false,
           "instant": true,
           "legendFormat": "__auto",
-          "limit": "",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT non_negative_derivative(sum(\"bytes_recv\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" = 'eth0' OR \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" =~ /ens/) AND  GROUP BY time() fill(linear)",
           "range": false,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_network_receive_bytes_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              },
-              {
-                "params": [
-                  "*8"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "title": "current data rate incoming",
@@ -563,7 +432,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -621,47 +490,17 @@
       "targets": [
         {
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$service\"}[5m])",
-          "groupBy": [],
+          "expr": "rate(jitsi_jvb_relay_bytes_sent_total{service=\"$service\"}[5m])",
+          "hide": false,
           "instant": true,
           "legendFormat": "__auto",
-          "limit": "",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT non_negative_derivative(sum(\"bytes_sent\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" = 'eth0' OR \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net/ AND \"interface\" =~ /ens/) AND  GROUP BY time() fill(linear)",
           "range": false,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_network_transmit_bytes_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              },
-              {
-                "params": [
-                  "*8"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "title": "current data rate outgoing",
@@ -670,7 +509,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -759,45 +598,17 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": "",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "expr": "jitsi_jvb_conferences{service=\"$service\"}",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
+          "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"conferences\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
           "range": true,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "conferences"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "title": "number of conferences",
@@ -806,7 +617,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -895,45 +706,17 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": "",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "expr": "jitsi_jvb_visitors_total{service=\"$service\"}",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
+          "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"participants\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
           "range": true,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "participants"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "timeShift": "10s",
@@ -943,7 +726,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -1032,83 +815,30 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": ":  Running",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
-          },
-          "editorMode": "code",
-          "expr": "jitsi_jvb_endpoints_sending_video{service=\"$service\"}",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "legendFormat": "video",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "range": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "videostreams"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": ":  Running",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "expr": "jitsi_jvb_endpoints_sending_audio{service=\"$service\"}",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
           "hide": false,
+          "instant": false,
           "legendFormat": "audio",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
           "range": true,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "videostreams"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "jitsi_jvb_endpoints_sending_video{service=\"$service\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "video",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "number of streams",
@@ -1117,7 +847,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -1206,55 +936,27 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": "",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
           "expr": "jitsi_jvb_average_rtt{service=\"$service\"}",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
+          "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"average_response_ms\") FROM \"ping\" WHERE (\"url\" =~ /jvb/) AND  GROUP BY time(), \"url\" fill(null)",
           "range": true,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "rtt_aggregate"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "median"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "timeShift": "10s",
-      "title": "median latency",
+      "title": "average rtt",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "fieldConfig": {
         "defaults": {
@@ -1354,110 +1056,30 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": " RX",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$service\"}[5m])",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "legendFormat": "sending",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT non_negative_derivative(mean(\"bytes_recv\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^$/ AND  \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net$/ ) AND  GROUP BY time(), \"host\" fill(null)",
+          "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$service\"}[$__rate_interval])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
           "range": true,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_network_receive_bytes_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              },
-              {
-                "params": [
-                  "*8"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         },
         {
-          "alias": " TX",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$service\"}[5m])",
-          "groupBy": [
-            {
-              "params": [
-                "$interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "legendFormat": "receiving",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT non_negative_derivative(mean(\"bytes_sent\"), 1s) *8 FROM \"net\" WHERE (\"host\" =~ /^$/ AND  \"host\" =~ /^jvb[0-9]+.meet.ffmuc.net$/ ) AND  GROUP BY time(), \"host\" fill(null)",
+          "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$service\"}[$__rate_interval]) * -1",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
           "range": true,
-          "rawQuery": false,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "node_network_transmit_bytes_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              },
-              {
-                "params": [
-                  "*8"
-                ],
-                "type": "math"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "B"
         }
       ],
       "title": "data rate",
@@ -1466,7 +1088,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1557,46 +1179,17 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": "",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_conferences{service=\"$service\"}[1d])",
-          "groupBy": [
-            {
-              "params": [
-                "1d"
-              ],
-              "type": "time"
-            }
-          ],
-          "interval": "1d",
+          "expr": "jitsi_jvb_conferences{service=\"$service\"}[24h]",
+          "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"conferences\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
           "range": true,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "conferences"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "timeFrom": "28d",
@@ -1606,7 +1199,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "ddr67f2vrw6ioe"
+        "uid": "PBFA97CFB590B2093"
       },
       "description": "",
       "fieldConfig": {
@@ -1697,46 +1290,17 @@
       "pluginVersion": "9.5.2",
       "targets": [
         {
-          "alias": "",
           "datasource": {
-            "type": "influxdb",
-            "uid": "P9CDEA3BDE4D20668"
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_visitors_total{service=\"$service\"}[1d]) ",
-          "groupBy": [
-            {
-              "params": [
-                "1d"
-              ],
-              "type": "time"
-            }
-          ],
-          "interval": "1d",
+          "expr": "jitsi_jvb_visitors_total{service=\"$service\"}",
+          "hide": false,
+          "instant": false,
           "legendFormat": "__auto",
-          "measurement": "/^$jvb$/",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT mean(\"conferences\") FROM \"exec_meet\" WHERE  GROUP BY time(), \"host\" fill(null)",
           "range": true,
-          "rawQuery": false,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "participants"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "max"
-              }
-            ]
-          ],
-          "tags": []
+          "refId": "A"
         }
       ],
       "timeFrom": "28d",
@@ -1751,9 +1315,13 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "jitsi-service-chaosdorf",
           "value": "jitsi-service-chaosdorf"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
         },
         "definition": "label_values(jitsi_jvb_healthy,service)",
         "hide": 0,
@@ -1793,8 +1361,8 @@
     ]
   },
   "timezone": "",
-  "title": "Jitsi Meet Stats",
-  "uid": "U6sKqPuZz",
-  "version": 1,
+  "title": "Jitsi Meet Stats debug",
+  "uid": "U6sKqPuZzzzz",
+  "version": 5,
   "weekStart": ""
 }
