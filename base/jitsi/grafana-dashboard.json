@@ -710,7 +710,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "jitsi_jvb_current_visitors{service=\"$service\"}",
+          "expr": "jitsi_jvb_visitors_total{service=\"$service\"}",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1063,7 +1063,7 @@
           "expr": "rate(jitsi_jvb_bytes_received_total{service=\"$service\"}[$__rate_interval])",
           "hide": false,
           "instant": false,
-          "legendFormat": "receiving",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         },
@@ -1076,7 +1076,7 @@
           "expr": "rate(jitsi_jvb_bytes_sent_total{service=\"$service\"}[$__rate_interval]) * -1",
           "hide": false,
           "instant": false,
-          "legendFormat": "sending",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "B"
         }
@@ -1101,23 +1101,37 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "fillOpacity": 80,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
             "lineWidth": 1,
+            "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
             },
             "thresholdsStyle": {
               "mode": "off"
             }
           },
           "decimals": 0,
+          "links": [],
           "mappings": [],
+          "min": 0,
+          "noValue": "0",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1130,7 +1144,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -1144,27 +1159,23 @@
       "id": 20,
       "interval": "1d",
       "options": {
-        "barRadius": 0,
-        "barWidth": 0.97,
-        "fullHighlight": false,
-        "groupWidth": 0.7,
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": false
         },
-        "orientation": "auto",
-        "showValue": "auto",
-        "stacking": "none",
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
-        },
-        "xTickLabelRotation": 0,
-        "xTickLabelSpacing": 0
+        }
       },
-      "pluginVersion": "11.1.0",
+      "pluginVersion": "9.5.2",
       "targets": [
         {
           "datasource": {
@@ -1172,7 +1183,6 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "exemplar": false,
           "expr": "max_over_time(jitsi_jvb_conferences{service=\"$service\"}[24h])",
           "hide": false,
           "instant": false,
@@ -1181,8 +1191,9 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "28d",
       "title": "daily max. number of conferences",
-      "type": "barchart"
+      "type": "timeseries"
     },
     {
       "datasource": {
@@ -1201,16 +1212,27 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "fillOpacity": 80,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
             "lineWidth": 1,
+            "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "normal"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -1248,25 +1270,21 @@
       "id": 21,
       "interval": "1d",
       "options": {
-        "barRadius": 0,
-        "barWidth": 0.97,
-        "fullHighlight": false,
-        "groupWidth": 0.7,
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "mean",
+            "lastNotNull",
+            "max",
+            "min"
+          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": false
         },
-        "orientation": "auto",
-        "showValue": "auto",
-        "stacking": "none",
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
-        },
-        "xTickLabelRotation": 0,
-        "xTickLabelSpacing": 0
+        }
       },
       "pluginVersion": "9.5.2",
       "targets": [
@@ -1276,7 +1294,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "max_over_time(jitsi_jvb_current_visitors{service=\"$service\"}[24h])",
+          "expr": "max_over_time(jitsi_jvb_visitors_total{service=\"$service\"}[24h])",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1284,8 +1302,9 @@
           "refId": "A"
         }
       ],
+      "timeFrom": "28d",
       "title": "daily max. number of participants",
-      "type": "barchart"
+      "type": "timeseries"
     }
   ],
   "refresh": "10s",
