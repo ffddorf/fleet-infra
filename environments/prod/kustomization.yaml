@@ -7,5 +7,6 @@ resources:
 - ../../base/dendrite
 - ../../base/external-dns
 - ../../base/grafana
+- ../../base/jitsi
 - ../../base/prometheus
 - ../../base/snowflake
