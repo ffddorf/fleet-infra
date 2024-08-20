@@ -25,6 +25,8 @@ spec:
         disable_login_form: true
       server:
         root_url: https://grafana.ffddorf.net
+      server.custom_response_headers:
+        Access-Control-Allow-Origin: https://chaosdorf.de
       users:
         auto_assign_org_role: Admin
         default_theme: system
