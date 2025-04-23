@@ -1,8 +1,0 @@
----
-apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: dendrite
-spec:
-  interval: 1h
-  url: https://matrix-org.github.io/dendrite/
