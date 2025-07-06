@@ -6,5 +6,6 @@ resources:
 - ../../environments/prod
 - traefik-config.yaml
 - apps.yaml
+- kube-api.yaml
 patchesStrategicMerge:
 - grafana-helm-release.yaml
