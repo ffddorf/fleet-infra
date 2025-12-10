@@ -6,7 +6,7 @@ Set up a config section for our cluster:
 
 ```shell
 kubectl config set-cluster ffddorf-k3s \
-  --server https://k3s1.freifunk-duesseldorf.de
+  --server https://k3s.ffddorf.net
 ```
 
 Configure client credentials - complete with the provided client secret!
