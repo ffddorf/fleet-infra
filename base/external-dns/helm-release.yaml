@@ -13,7 +13,8 @@ spec:
   interval: 1h
   releaseName: external-dns
   values:
-    provider: cloudflare
+    provider:
+      name: cloudflare
     domainFilters:
     - ffddorf.net
     env:
