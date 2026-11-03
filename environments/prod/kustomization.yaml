@@ -9,3 +9,4 @@ resources:
 - ../../base/jitsi
 - ../../base/prometheus
 - ../../base/snowflake
+- ../../base/kured
