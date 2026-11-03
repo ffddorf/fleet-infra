@@ -13,7 +13,9 @@ spec:
   interval: 1h
   releaseName: external-dns
   values:
-    provider: cloudflare
+    policy: sync
+    provider:
+      name: cloudflare
     domainFilters:
     - ffddorf.net
     env:
